@@ -1,8 +1,10 @@
 # Web API
+
 ## Quickstart Project
 Contents:
 - Sample .gitignore and .editorconfig files
-- A basic controller, service, data repository, and Sqlite db context.
+- A basic controller, service, data repository.
+- EF Core
 - Unit test utilizing XUnit and Moq.
 - Link: https://dev.azure.com/ostusa/Web%20Dev%20Workspace/_git/quick-starts?path=/web-api
 
