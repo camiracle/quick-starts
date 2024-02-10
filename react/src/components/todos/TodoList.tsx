@@ -16,12 +16,24 @@ export default function TodoList() {
     <>
       <div className="flex flex-col items-center m-5">
         <div className="w-2/5">
-          <div className="bg-black rounded-t-xl">
-            <h1 className="text-gray-300 p-2 flex flex-col items-center">
+          <div className="bg-gray-600 rounded-t-xl">
+            <h1 className="text-gray-200 font-bold p-2 flex flex-col items-center">
               Todo List
             </h1>
           </div>
           <div className="bg-lime-200 p-4 rounded-b-xl min-h-24">
+            <form>
+              <div className="flex flex-row gap-5">
+                <div className="flex-grow">
+                  <input className="w-full mb-5 h-8 p-2 rounded-md"></input>
+                </div>
+                <div>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
             {renderItems()}
           </div>
         </div>
