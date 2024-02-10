@@ -12,16 +12,16 @@ public class TodoController(ILogger<TodoController> logger, ITodoService todoSer
     private readonly ILogger<TodoController> logger = logger;
 
     [HttpGet()]
-    public IEnumerable<Todo> Get()
+    public async Task<IEnumerable<Todo>> Get()
     {
         // this.logger.LogInformation("Getting Todos");
-        return this.todoService.GetTodos();
+        return await this.todoService.GetTodos();
     }
 
     [HttpGet("{id}")]
-    public Todo Get(int id)
+    public async Task<Todo> Get(int id)
     {
         // this.logger.LogInformation("Getting Todos");
-        return this.todoService.GetTodo(id);
+        return await this.todoService.GetTodo(id);
     }
 }

@@ -1,5 +1,5 @@
+using TodoApi.Models;
 using TodoApi.Repositories;
-using TodoApi.Seed;
 using TodoApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // My services
-builder.Services.AddSingleton<ITodoService, TodoService>();
-builder.Services.AddSingleton<ITodoRepository, TodoSqlLite>();
+builder.Services.AddDbContext<TodoContext>();
+builder.Services.AddScoped<ITodoService, TodoService>();
+builder.Services.AddScoped<ITodoRepository, TodoSqlLite>();
 
 var app = builder.Build();
 
@@ -25,7 +26,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
+
+app.UseCors(options => options
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowAnyOrigin());
 
 app.UseAuthorization();
 

@@ -1,22 +1,24 @@
 namespace TodoApi.Repositories;
 
+using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 
-public class TodoSqlLite : ITodoRepository, IDisposable
+public class TodoSqlLite : ITodoRepository
 {
-    private readonly TodoContext db = new();
-    public List<Todo> GetTodos()
+    private readonly TodoContext _context;
+
+    public TodoSqlLite(TodoContext context)
     {
-        return this.db.Todo.ToList();
+        _context = context;
     }
 
-    public Todo GetTodo(int id)
+    public async Task<List<Todo>> GetTodos()
     {
-        return this.db.Todo.First(t => t.TodoId == id);
+        return await _context.Todo.ToListAsync();
     }
 
-    public void Dispose()
+    public async Task<Todo> GetTodo(int id)
     {
-        GC.SuppressFinalize(this);
+        return await _context.Todo.FirstOrDefaultAsync(t => t.TodoId == id);
     }
 }

@@ -4,6 +4,6 @@ using TodoApi.Models;
 
 public interface ITodoService
 {
-    public List<Todo> GetTodos();
-    public Todo GetTodo(int id);
+    public Task<List<Todo>> GetTodos();
+    public Task<Todo> GetTodo(int id);
 }

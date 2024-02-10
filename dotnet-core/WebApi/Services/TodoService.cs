@@ -7,12 +7,12 @@ public class TodoService(ITodoRepository todoRepository) : ITodoService
 {
     private readonly ITodoRepository todoRepository = todoRepository;
 
-    public List<Todo> GetTodos()
+    public Task<List<Todo>> GetTodos()
     {
         return this.todoRepository.GetTodos();
     }
 
-    public Todo GetTodo(int id)
+    public Task<Todo> GetTodo(int id)
     {
         return this.todoRepository.GetTodo(id);
     }

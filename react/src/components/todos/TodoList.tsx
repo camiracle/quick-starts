@@ -1,9 +1,17 @@
+import { useEffect, useState } from 'react'
 import { getTodos } from '../../services/todo.service'
 import TodoListItem from './TodoListItem'
 
 export default function TodoList() {
-  let todos: any[] = []
-  getTodos().then((t) => (todos = t))
+  const [todos, setTodos] = useState([])
+
+  // TODO: setup Zustand and make service calls from store, or something
+
+  useEffect(() => {
+    getTodos().then((t) => {
+      setTodos(t)
+    })
+  }, [])
 
   return (
     <>

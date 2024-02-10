@@ -4,8 +4,7 @@ export async function getTodos() {
   return fetch(`${url}`, {
     method: 'GET',
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      accept: 'application/json',
     },
   }).then((res) => res.json())
 }
