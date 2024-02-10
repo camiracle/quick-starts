@@ -1,5 +1,7 @@
 export async function getTodos() {
-  const url = 'https://localhost:5000/todo'
+  const url = `${import.meta.env.VITE_API_URL}/todo`
+
+  import.meta.env.VITE_API_URL
 
   return fetch(`${url}`, {
     method: 'GET',
